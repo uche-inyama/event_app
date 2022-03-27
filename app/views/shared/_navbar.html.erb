@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+  <div class="container-fluid">
+    <%= link_to "Events", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <% if current_user %>
+          <%= button_to "logout", destroy_user_session_path, class: "mt-2 px-3 btn btn-primary w-100", method: :delete %>
+        <% else %>
+          <%= link_to "sign up", new_user_registration_path, class: "px-3  my-2  mx-md-2 btn btn-primary" %>
+          <%= link_to "login", user_session_path, class: "px-3 w-100 btn btn-primary" %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
