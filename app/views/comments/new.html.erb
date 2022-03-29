@@ -1,0 +1,3 @@
+<%= turbo_frame_tag Comment.new do %>
+  <%= render partial: 'form', locals: { event: @event, comment: @comment }%>
+<% end %>

@@ -1,0 +1,7 @@
+<%= form_with model: Comment.new, url: event_comment_path(event) do |form| %>
+  <div class="field form-control">
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </div>
+  <%= form.submit %>
+<% end %>

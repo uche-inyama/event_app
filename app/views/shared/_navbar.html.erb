@@ -7,7 +7,8 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <% if current_user %>
-          <%= button_to "logout", destroy_user_session_path, class: "mt-2 px-3 btn btn-primary w-100", method: :delete %>
+          <%= render partial: 'shared/notifications' %>
+          <%= button_to "logout", destroy_user_session_path, class: "px-3 btn btn-primary w-100", method: :delete %>
         <% else %>
           <%= link_to "sign up", new_user_registration_path, class: "px-3  my-2  mx-md-2 btn btn-primary" %>
           <%= link_to "login", user_session_path, class: "px-3 w-100 btn btn-primary" %>

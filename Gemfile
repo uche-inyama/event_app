@@ -25,6 +25,10 @@ gem 'redis', '~> 4.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+gem 'image_processing'
+gem 'shrine'
+gem "shrine-cloudinary"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
@@ -53,3 +57,5 @@ gem 'validates_timeliness', '~> 6.0.0.beta2'
 
 
 gem "devise", "~> 4.8"
+
+gem "noticed", "~> 1.5"

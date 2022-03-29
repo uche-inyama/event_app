@@ -1,0 +1,55 @@
+<div class="mb-4 d-flex justify-content-center align-items-center">
+  <%= form_with model: event do |form| %>
+    <%= render "shared/error_messages", form: form %>
+    
+    <div class="row d-flex">
+      <div class="col">
+        <div class="field mb-2 ">
+          <div><%= form.label :date %></div>
+          <%= form.date_field :start_date, class: "form-control"%> <%= form.date_field :end_date, class: "form-control" %>
+        </div>
+        <div class="field mb-2">
+          <div><%= form.label :time %></div>
+          <%= form.time_field :time %>
+        </div>
+              
+        <div class="field mb-3">
+          <div><%= form.label :address %></div>
+          <%= form.text_field :address, placeholder: :address %>
+        </div>
+      </div> 
+
+      <div class="col">
+
+        <div class="field mb-2">
+          <div><%= form.label :theme %></div>
+          <%= form.text_field :theme , placeholder: :theme %>
+        </div>
+
+        <div class="field mb-2">
+          <%= form.label :image %>
+          <%= form.file_field :image %>
+        </div>
+        <div class="field mb-2">
+          <div><%= form.label :details %></div>
+          <%= form.text_field :details, placeholder: :details %>
+        </div>
+
+        <div class="mb-2">
+          <%= form.radio_button :status, "active" %>
+          <%= form.label :active %>
+
+          <%= form.radio_button :status, "inactive" %>
+          <%= form.label :inacive, "inactive" %>
+        </div>
+
+        <div class="mb-2">
+          <%= form.select :event_type, [["free", "free"], ["paid", "paid"]] %>
+        </div> 
+      </div>
+    </div>
+    <%= link_to "Cancel", events_path, class: "btn btn--light" %>
+    <%= form.submit %>
+  <% end %>
+</div>
+

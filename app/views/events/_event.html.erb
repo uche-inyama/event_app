@@ -1,0 +1,39 @@
+<%= turbo_frame_tag dom_id(event) do%>
+  <div class="">
+      <div class="mb-3">
+      <%= link_to "#" do %>
+        <%= image_tag(event.image.url, class: "author_image w-100") if event.image %>
+      <% end %>
+    </div>
+  </div>
+  <div>
+    <p><strong><%= event.theme %></strong></p>
+    <div>
+      <div class="mb-2">
+        <div class="mb-2">
+          <% if event.get_status(event.end_date) == 'active' %>
+            <span class="border border-success rounded text-capitalize p-1"><%= event.get_status(event.end_date) %></span>
+          <% else %>
+            <span class="border border-danger rounded text-capitalize p-1"><%= event.get_status(event.end_date) %></span>
+          <% end %> 
+          <span class="border border-primary rounded text-capitalize px-3 py-1"><%= event.event_type %></span> 
+        </div>
+      </div>
+      <div id="" class="mb-2 d-flex justify-content-between">
+        <div class="d-flex">
+          <%= turbo_frame_tag "like_#{event.id}" do %>
+            <%= render partial: 'likes/like', locals: { event: event } %>
+          <% end %>
+          <%= turbo_frame_tag Comment.new do%>
+            <%= link_to "comment", new_event_comment_path(event), class: "mx-2 btn btn-primary" %>
+          <% end %>
+          <%= link_to 'More...', event_path(event), data: { turbo_frame: "_top" }, class: 'd-flex align-items-center btn btn-primary'%>
+        </div>
+        <div class="d-flex">
+          <%= link_to 'Edit', edit_event_path(event), class: 'd-flex align-items-center px-3 py-0 btn btn-primary mx-1' %>
+          <%= button_to 'Delete', event_path(event), class: "btn btn-primary py-0 h-100", method: :delete %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
