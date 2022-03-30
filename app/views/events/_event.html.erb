@@ -5,7 +5,7 @@
         <%= image_tag(event.image.url, class: "author_image w-100") if event.image %>
       <% end %>
     </div>
-    <div style="background-color: #ebe9e8" class="px-3 py-2">
+    <div style="background-color: #ebe9e8" class="p-2">
       <p><strong><%= event.theme %></strong></p>
       <div>
         <div class="mb-2">
@@ -27,7 +27,7 @@
               <%= render partial: 'likes/like', locals: { event: event } %>
             <% end %>
             <%= turbo_frame_tag Comment.new do%>
-              <%= link_to new_event_comment_path(event), class: "d-flex align-items-center mx-2 btn btn-default" do %>
+              <%= link_to new_event_comment_path(event), class: "d-flex align-items-center pt-0 btn btn-default" do %>
                 <i class="bi bi-chat-left"></i>
                 <i class="d-inline-block mx-1 pb-1"><%= event.comments.count || 0 %></i>
               <% end %>

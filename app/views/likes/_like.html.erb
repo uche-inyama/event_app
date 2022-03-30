@@ -1,13 +1,13 @@
 <% if current_user.likes?(event) %>
   <%= turbo_frame_tag "like_#{event.id}" do %>
-    <%= button_to event_like_path(event), class: "btn btn-default mr-2", method: :delete do %>
+    <%= button_to event_like_path(event), style: "width: 45px", class: "btn btn-default p-0", method: :delete do %>
       <i class="bi bi-heart"></i>
       <i><%= event.likes.count || 0 %></i>
     <% end %>
   <% end %>
 <% else %>
   <%= turbo_frame_tag "like_#{event.id}" do %>
-    <%= button_to event_like_path(event), class: "btn btn-default mr-2", method: :post do %>
+    <%= button_to event_like_path(event), style: "width: 45px", class: "btn btn-default p-0", method: :post do %>
       <i class="bi bi-heart"></i>
       <i><%= event.likes.count || 0 %></i>
     <% end %>
