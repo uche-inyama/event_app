@@ -5,7 +5,7 @@
         <%= image_tag(event.image.url, class: "author_image w-100") if event.image %>
       <% end %>
     </div>
-    <div style="background-color: #ebe9e8">
+    <div style="background-color: #ebe9e8" class="px-3 py-2">
       <p><strong><%= event.theme %></strong></p>
       <div>
         <div class="mb-2">
@@ -16,21 +16,21 @@
               <span class="border border-danger rounded text-capitalize p-1"><%= event.get_status(event.end_date) %></span>
             <% end %> 
             <span class="border border-primary rounded text-capitalize px-3 py-1"><%= event.event_type %></span> 
+            <%= link_to event_path(event), data: { turbo_frame: "_top" }, class: "btn btn-default" do %>
+              <i class="bi bi-three-dots"></i>
+            <% end %>
           </div>
         </div>
-        <div id="" class="mb-2 d-flex justify-content-between">
+        <div id="" class="mb-2 d-flex justify-content-between">          
           <div class="d-flex">
             <%= turbo_frame_tag "like_#{event.id}" do %>
               <%= render partial: 'likes/like', locals: { event: event } %>
             <% end %>
             <%= turbo_frame_tag Comment.new do%>
-              <%= link_to new_event_comment_path(event) , class: "d-flex align-items-center mx-2 btn btn-default" do %>
+              <%= link_to new_event_comment_path(event), class: "d-flex align-items-center mx-2 btn btn-default" do %>
                 <i class="bi bi-chat-left"></i>
                 <i class="d-inline-block mx-1 pb-1"><%= event.comments.count || 0 %></i>
               <% end %>
-            <% end %>
-            <%= link_to event_path(event), data: { turbo_frame: "_top" }, class: "btn btn-default" do %>
-              <i class="bi bi-three-dots"></i>
             <% end %>
           </div>
           <div class="d-flex">
