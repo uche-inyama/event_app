@@ -1,9 +1,18 @@
 <% if current_user.likes?(event) %>
   <%= turbo_frame_tag "like_#{event.id}" do %>
-    <%= button_to "#{pluralize(event.likes.count, 'like') || 0 }", event_like_path(event), class: "mr-2 btn btn-primary", method: :delete %>
+    <%= button_to event_like_path(event), class: "btn btn-default mr-2", method: :delete do %>
+      <i class="bi bi-heart"></i>
+      <i><%= event.likes.count || 0 %></i>
+    <% end %>
   <% end %>
 <% else %>
   <%= turbo_frame_tag "like_#{event.id}" do %>
-    <%= button_to "#{pluralize(event.likes.count, 'like') || 0 }", event_like_path(event), class: "mr-2 btn btn-primary", method: :post %>
+    <%= button_to event_like_path(event), class: "btn btn-default mr-2", method: :post do %>
+      <i class="bi bi-heart"></i>
+      <i><%= event.likes.count || 0 %></i>
+    <% end %>
   <% end %>
 <% end %>
+
+
+
