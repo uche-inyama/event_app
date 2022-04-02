@@ -1,15 +1,11 @@
-<h3>All Events</h3>
+<div class="mt-4">
+  <%= turbo_frame_tag Event.new %>
 
-<%= turbo_frame_tag "first_turbo_frame" do %>
-  <%= link_to "Create Event", new_event_path, data: { turbo_frame: dom_id(Event.new) }, class: "my-2 btn btn-primary"%>
-<% end %>
-
-<%= turbo_frame_tag Event.new %>
-
-<%= turbo_frame_tag "events" do %>
-  <div class="row">
-    <div class="col mb-4 col-md-8 mx-md-auto">
-      <%= render @events %>
+  <%= turbo_frame_tag "events" do %>
+    <div class="row">
+      <div class="col mb-4 col-md-8 mx-md-auto">
+        <%= render @events %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

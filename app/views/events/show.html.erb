@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="">
+    <div class="image-wrapper mx-auto mt-4 mb-2">
+      <%= image_tag(@event.image.url, class: "author_image w-100") if @event.image %>
+    </div>
+   <%= turbo_frame_tag 'details' do %>
+    <%= link_to 'more...', details_path(@event), data: { turbo_frame: "show" } %>
+   <% end %>
+
+   <%= turbo_frame_tag 'show' %>
+  </div>
+  <div class="">
+    <% @comments.each do |comment| %>
+      <span class="w-25 h-25" style="border: 50%"><%= image_tag(comment.user.avatar.url) if comment.user.avatar %></span><p class="mb-1"><%= comment.body %></p>
+    <% end %>
+  </div>
+</div>

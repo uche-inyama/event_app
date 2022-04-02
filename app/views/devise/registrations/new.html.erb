@@ -10,6 +10,10 @@
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "example@gmail.com" %>
       </div>
 
+      <div class="field">
+        <%= f.file_field :avatar %>
+      </div>
+
       <div class="field mb-3">
         <div><%= f.label :password %></div>
         <% if @minimum_password_length %>

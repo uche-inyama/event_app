@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_event, only: [:edit, :update, :show, :destroy]
+  before_action :set_event, only: [:details, :edit, :update, :show, :destroy]
 
   def index
     @events = Event.all
@@ -14,7 +14,11 @@ class EventsController < ApplicationController
   end
 
   def show
+    @comments = @event.comments.limit(4)
     mark_notifications_as_read
+  end
+
+  def details
   end
 
   def create

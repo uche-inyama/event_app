@@ -13,3 +13,28 @@
  *= require_tree .
  *= require_self
  */
+
+ .button_to {
+  display: flex;
+  align-items: center;
+}
+
+.image-wrapper {
+  width: 350px;
+}
+
+@media screen and (min-width: 768px) {
+   .session {
+     display: flex;
+     width: 200px;
+   }
+   .sign-up, .log-in {
+     width: 50%;
+   }
+   .log-in {
+     height: 40px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+   }
+ }

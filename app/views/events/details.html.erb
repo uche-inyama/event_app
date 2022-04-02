@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "show" do%>
+  <%= render partial: 'event_detail', locals: {event: @event } %>
+  <%= link_to 'close', event_path(@event) %>
+<% end %>
+

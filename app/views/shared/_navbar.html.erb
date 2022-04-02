@@ -5,13 +5,18 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ms-auto mb-lg-0">
         <% if current_user %>
           <%= render partial: 'shared/notifications' %>
-          <%= button_to "logout", destroy_user_session_path, class: "px-3 btn btn-primary w-100", method: :delete %>
+          <%= turbo_frame_tag "first_turbo_frame" do %>
+            <%= link_to "Create Event", new_event_path, data: { turbo_frame: dom_id(Event.new) }, class: "px-3 my-2 w-100 btn btn-primary mx-md-1"%>
+          <% end %>
+          <%= button_to "logout", destroy_user_session_path, class: "mx-md-2 px-3 btn btn-primary w-100", method: :delete %>
         <% else %>
-          <%= link_to "sign up", new_user_registration_path, class: "px-3  my-2  mx-md-2 btn btn-primary" %>
-          <%= link_to "login", user_session_path, class: "px-3 w-100 btn btn-primary" %>
+          <div class="session">
+            <%= link_to "sign up", new_user_registration_path, class: "sign-up me-2 btn btn-primary" %>
+            <%= link_to "login", user_session_path, class: "log-in btn btn-primary" %>
+          </div>
         <% end %>
       </ul>
     </div>

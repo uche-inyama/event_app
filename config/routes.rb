@@ -8,4 +8,5 @@ Rails.application.routes.draw do
     resource :comment
   end
   root to: "home#index"
+  get "event/:id/details", to: "events#details", as: 'details'
 end
