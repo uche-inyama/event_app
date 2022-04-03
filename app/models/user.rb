@@ -12,7 +12,6 @@ class User < ApplicationRecord
 
   has_many :notifications, as: :recipient, dependent: :destroy
 
-  after_create_commit :add_default_avatar
 
   def likes?(event)
     event.likes.where(user_id: id).any?
@@ -21,7 +20,6 @@ class User < ApplicationRecord
   private
 
   def add_default_avatar
-    debugger
     unless self.avatar_data?
       self.avatar.attach(
         io: File.open(

@@ -7,11 +7,15 @@
     <%= link_to 'more...', details_path(@event), data: { turbo_frame: "show" } %>
    <% end %>
 
-   <%= turbo_frame_tag 'show' %>
+  <%= turbo_frame_tag 'show' %>
   </div>
-  <div class="">
     <% @comments.each do |comment| %>
-      <span class="w-25 h-25" style="border: 50%"><%= image_tag(comment.user.avatar.url) if comment.user.avatar %></span><p class="mb-1"><%= comment.body %></p>
+      <div class="d-flex mb-2">
+        <div class="comment-image-wrapper">
+          <%= image_tag(comment.user.avatar.url, size: "50") if comment.user.avatar%>
+        </div> 
+        <div class="ms-2 d-flex align-items-end text-bottom"><%= comment.body %></div>
+      </div>
     <% end %>
   </div>
 </div>

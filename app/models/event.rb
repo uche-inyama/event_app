@@ -6,7 +6,7 @@ class Event < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   has_noticed_notifications model_name: 'Notification'
-  has_many :notifications, through: :user, dependent: :destroy
+  has_many :notifications, through: :user, dependent: :destroy, source: :comments
   
   # after_create_commit { broadcast_prepend_to "events" }
   # after_destroy_commit { broadcast_remove_to "events" }

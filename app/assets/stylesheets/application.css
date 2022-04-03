@@ -23,6 +23,11 @@
   width: 350px;
 }
 
+.detail-close {
+  position: relative;
+  bottom: 10px;
+}
+
 @media screen and (min-width: 768px) {
    .session {
      display: flex;
