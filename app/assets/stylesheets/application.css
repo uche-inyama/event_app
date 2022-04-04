@@ -19,7 +19,13 @@
   align-items: center;
 }
 
-.image-wrapper {
+.image-wrapper,
+.event-detail,
+.detail-close  {
+  width: 350px;
+}
+
+.more{
   width: 350px;
 }
 

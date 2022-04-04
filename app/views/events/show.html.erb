@@ -4,18 +4,22 @@
       <%= image_tag(@event.image.url, class: "author_image w-100") if @event.image %>
     </div>
    <%= turbo_frame_tag 'details' do %>
-    <%= link_to 'more...', details_path(@event), data: { turbo_frame: "show" } %>
+    <div class="d-flex justify-content-start">
+      <%= link_to 'more...', details_path(@event), class: "more d-block mx-auto", data: { turbo_frame: "show" } %>
+    </div>
    <% end %>
-
-  <%= turbo_frame_tag 'show' %>
   </div>
-    <% @comments.each do |comment| %>
-      <div class="d-flex mb-2">
-        <div class="comment-image-wrapper">
-          <%= image_tag(comment.user.avatar.url, size: "50") if comment.user.avatar%>
-        </div> 
-        <div class="ms-2 d-flex align-items-end text-bottom"><%= comment.body %></div>
-      </div>
+  <%= turbo_frame_tag 'show' %>
+  <div style="" class="comments d-flex justify-content-center">
+    <div style="width: 350px;">
+      <% @comments.each do |comment| %>
+        <div class="d-flex mb-2">
+          <div class="comment-image-wrapper">
+            <%= image_tag(comment.user.avatar.url, size: "50") if comment.user.avatar%>
+          </div> 
+          <div class="ms-2 d-flex align-items-end text-bottom"><%= comment.body %></div>
+        </div>
     <% end %>
+    </div>
   </div>
 </div>
