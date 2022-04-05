@@ -7,6 +7,6 @@ Rails.application.routes.draw do
     resource :like
     resource :comment
   end
-  root to: "home#index"
+  root to: "events#index"
   get "event/:id/details", to: "events#details", as: 'details'
 end

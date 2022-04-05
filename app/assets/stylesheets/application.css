@@ -25,7 +25,7 @@
   width: 350px;
 }
 
-.more{
+.more {
   width: 350px;
 }
 
@@ -47,5 +47,9 @@
      display: flex;
      align-items: center;
      justify-content: center;
+   }
+   #flash {
+     width: 66%;
+     margin: 0 auto;
    }
  }
