@@ -4,8 +4,10 @@
       <%= image_tag(@event.image.url, class: "author_image w-100") if @event.image %>
     </div>
    <%= turbo_frame_tag 'details' do %>
-    <div class="d-flex justify-content-start">
-      <%= link_to 'more...', details_path(@event), class: "more d-block mx-auto", data: { turbo_frame: "show" } %>
+    <div class="mx-auto more">
+      <div>
+        <%= link_to 'more...', details_path(@event), data: { turbo_frame: "show" } %>
+      </div>
     </div>
    <% end %>
   </div>
