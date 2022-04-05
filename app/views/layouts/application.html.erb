@@ -16,7 +16,7 @@
   <body>
     <%= render partial: 'shared/navbar'%>
     <div class="container">
-      <%= render partial: "shared/flash_messages" %>
+      <div id="flash"><%= render partial: "shared/flash_messages" %></div>
       <%= yield %>
     </div>
   </body>

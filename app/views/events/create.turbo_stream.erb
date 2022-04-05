@@ -2,3 +2,4 @@
   <%= render partial: "events/event", locals: { event: @event }%>
 <% end %>
 <%= turbo_stream.update Event.new, "" %>
+<%= turbo_stream.replace "flash", partial: "shared/flash_messages"%>

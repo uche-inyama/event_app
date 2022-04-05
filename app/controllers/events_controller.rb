@@ -26,7 +26,7 @@ class EventsController < ApplicationController
     if @event.save
       respond_to do |format|
         format.html { redirect_to events_path, notice: "An event was successfully created."}
-        format.turbo_stream
+        format.turbo_stream { flash.now[:notice] = "Event was successfully created."}
       end
     else
       render :new, status: :unprocessable_entity
@@ -35,7 +35,10 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      redirect_to events_path, notice: "Event successfully updated."
+      respond_to do |format|
+        format.html { redirect_to events_path, notice: "Event successfully updated." }
+        format.turbo_stream { flash.now[:notice] = "Event successfully updated."}
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -44,8 +47,8 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     respond_to do |format|
-      format.html { redirect_to events_path, notice: "An event was successfully destroyed."}
-      format.turbo_stream
+      format.html { redirect_to events_path, notice: "An event was successfully deleted."}
+      format.turbo_stream { flash.now[:notice] = "Event successfully deleted."}
     end
   end
 
