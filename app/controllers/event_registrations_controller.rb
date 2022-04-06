@@ -1,9 +1,10 @@
-class EventRegistrations < ApplicationController
+class EventRegistrationsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @credentials = current_user.event_registrations.build(registration_params)
-    if @crendentials.save
+    @event_registration = current_user.event_registrations.build(registration_params)
+    if @event_registration.save
+      JoinEventMailer.event_joined(User.last, Event.last).deliver_now
       respond_to do |format|
         format.turbo_stream { flash.now[:notice] = "Thanks for joining. A confirmation link has been sent  to #{current_user.email}" }
       end
@@ -16,6 +17,7 @@ class EventRegistrations < ApplicationController
   private
 
   def registration_params
-    params.require(:event_registration).permit(:user_id, :event_id)
+    params.permit(:event_id)
   end
+
 end

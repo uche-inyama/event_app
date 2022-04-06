@@ -1,0 +1,3 @@
+<%= turbo_frame_tag "join_#{event.id}" do%>
+  <%= button_to "Join", event_join_path(event), class: "py-1 px-2 btn btn-primary" %>
+<% end %>

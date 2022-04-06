@@ -9,13 +9,16 @@
       <p><strong><%= event.theme %></strong></p>
       <div>
         <div class="mb-2">
-          <div class="mb-2">
+          <div class="mb-2 d-flex">
             <% if event.get_status(event.end_date) == 'active' %>
-              <span class="border border-success rounded text-capitalize p-1"><%= event.get_status(event.end_date) %></span>
+              <span class="border border-success rounded text-capitalize py-1 px-2"><%= event.get_status(event.end_date) %></span>
             <% else %>
-              <span class="border border-danger rounded text-capitalize p-1"><%= event.get_status(event.end_date) %></span>
+              <span class="border border-danger rounded text-capitalize py-1 px-2"><%= event.get_status(event.end_date) %></span>
             <% end %> 
-            <span class="border border-primary rounded text-capitalize px-3 py-1"><%= event.event_type %></span> 
+            <span class="border border-primary rounded text-capitalize px-3 mx-1 d-flex align-items-center"><%= event.event_type %></span> 
+            <%= turbo_frame_tag "join_#{event.id}" do%>
+              <%= render partial: 'event_registration_button', locals: { event: event }%>
+            <% end %>
           </div>
         </div>
         <div id="" class="mb-2 d-flex justify-content-between">          

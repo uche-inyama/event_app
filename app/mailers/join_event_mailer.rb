@@ -5,9 +5,12 @@ class JoinEventMailer < ApplicationMailer
   #
   #   en.join_event_mailer.event_joined.subject
   #
-  def event_joined
-    @greeting = "Hi"
+  def event_joined(user, event)
+    # @greeting = "Hello"
+    @event = event
+    @user = user
 
-    mail to: "to@example.org"
+    mail to: user.email,
+    subject: "New event participant"
   end
 end
