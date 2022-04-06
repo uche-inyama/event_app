@@ -7,12 +7,13 @@ class Event < ApplicationRecord
 
   has_noticed_notifications model_name: 'Notification'
   has_many :notifications, through: :user, dependent: :destroy, source: :comments
+  has_many :event_registrations
+  has_many :users, through: :event_registrations
   
   # after_create_commit { broadcast_prepend_to "events" }
   # after_destroy_commit { broadcast_remove_to "events" }
   # after_destroy_commit -> { broadcast_remove_later_to(self, locals: { user: current_user, event: self }) }
 
-  
   validates_presence_of :time, :address, :theme, :details, :event_type, :status
 
   validates_date :start_date, :on_or_after => lambda { Date.current },

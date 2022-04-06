@@ -12,6 +12,9 @@ class User < ApplicationRecord
 
   has_many :notifications, as: :recipient, dependent: :destroy
 
+  has_many :event_registrations
+  has_many :attended_events, through: :event_registrations, source: :event
+  
 
   def likes?(event)
     event.likes.where(user_id: id).any?
