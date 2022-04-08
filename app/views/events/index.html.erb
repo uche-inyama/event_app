@@ -1,11 +1,9 @@
+<%= turbo_stream_from "events" %>
 <div class="mt-4">
   <%= turbo_frame_tag Event.new %>
 
   <%= turbo_frame_tag "events" do %>
-    <div class="row">
-      <div class="col mb-4 col-md-5 mx-md-auto">
-        <%= render @events %>
-      </div>
-    </div>
+    <%= render "empty_state"%>
+    <%= render @events %>
   <% end %>
 </div>

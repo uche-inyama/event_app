@@ -11,7 +11,8 @@ class CommentsController < ApplicationController
     @comment.event_id = @event.id
     if @comment.save
       respond_to do |format|
-        format.html { redirect_to events_path, notice: "A comment was successfully created."}
+        # format.turbo_stream { flash.now[:notice] = "Comment was successfully created." }
+        format.html { redirect_to events_path }
       end
     else
       render :new, status: :unprocessable_entity

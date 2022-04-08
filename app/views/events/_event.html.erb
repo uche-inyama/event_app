@@ -1,5 +1,5 @@
 <%= turbo_frame_tag dom_id(event) do%>
-  <div class="mb-3">
+  <div class="each-event mb-3">
     <div class="mb-0 event-index-image-wrapper">
       <%= link_to event_path(event), data: { turbo_frame: "_top" } do %>
         <%= image_tag(event.image.url, class: "author_image w-100") if event.image %>
@@ -8,7 +8,7 @@
     <div style="background-color: #ebe9e8" class="p-2">
       <p><strong><%= event.theme %></strong></p>
       <div>
-        <div class="mb-2">
+        <div class="mb-2 py-2">
           <div class="mb-2 d-flex">
             <% if event.get_status(event.end_date) == 'active' %>
               <span class="border border-success rounded text-capitalize py-1 px-2"><%= event.get_status(event.end_date) %></span>

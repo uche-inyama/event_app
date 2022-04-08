@@ -1,21 +1,27 @@
-<nav style="position: fixed; z-index: 10; width: 100%;" class="navbar navbar-expand-md navbar-light bg-light">
+<nav style="position: fixed; top: 0px; z-index: 10; width: 100%;" class="navbar navbar-expand-md navbar-light bg-light">
   <div class="container-fluid">
-    <%= link_to "Events", root_path, class: "navbar-brand" %>
+    <%= link_to "Events", root_path, class: "ps-md-4 navbar-brand" %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto mb-lg-0">
+      <ul class="navbar-nav w-100 justify-content-end mb-lg-0">
         <% if current_user %>
-          <%= render partial: 'shared/notifications' %>
-          <%= turbo_frame_tag "first_turbo_frame" do %>
-            <%= link_to "Create Event", new_event_path, data: { turbo_frame: dom_id(Event.new) }, class: "px-3 my-2 w-100 btn btn-primary mx-md-1"%>
-          <% end %>
-          <%= button_to "logout", destroy_user_session_path, class: "mx-md-2 px-3 btn btn-primary w-100", method: :delete %>
+          <div class="d-md-flex">
+            <%= render partial: 'shared/notifications' %>
+            <%= turbo_frame_tag "first_turbo_frame" do %>
+              <%= link_to "Create Event", new_event_path, data: { turbo_frame: dom_id(Event.new) }, class: "px-3 my-2 w-100 btn btn-primary mx-md-1"%>
+            <% end %>
+            <%= button_to "logout", destroy_user_session_path, class: "mx-md-2 px-3 btn btn-primary w-100", method: :delete %>
+          </div>
         <% else %>
-          <div class="session">
-            <%= link_to "sign up", new_user_registration_path, class: "sign-up me-2 btn btn-primary" %>
-            <%= link_to "login", user_session_path, class: "log-in btn btn-primary" %>
+          <div class="session d-flex justify-content-end">
+            <div class="signup-wrapper me-2">
+              <%= link_to "sign up", new_user_registration_path, class: "sign-up me-2 w-100 btn btn-primary" %>
+            </div>
+            <div class="signin-wrapper">
+              <%= link_to "login", user_session_path, class: "log-in w-100 btn btn-primary" %>
+            </div>
           </div>
         <% end %>
       </ul>

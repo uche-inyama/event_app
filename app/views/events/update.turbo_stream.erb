@@ -1,2 +1,2 @@
 <%= turbo_stream.replace @event %>
-<%= turbo_stream.replace "flash", partial: "shared/flash_messages" %>
+<%= turbo_stream.prepend "flash", partial: "shared/flash_messages" %>

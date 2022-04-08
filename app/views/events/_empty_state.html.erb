@@ -1,0 +1,9 @@
+<div class="empty-state empty-state--only-child">
+  <p class="text-center empty-state__text">
+    There are no events yet!
+  </p>
+
+  <div class="d-flex justify-content-center">
+    <%= link_to "Add an event", new_event_path, class: "btn btn-primary", data: { turbo_frame: dom_id(Event.new) } %>   
+  </div>
+</div>

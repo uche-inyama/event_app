@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:details, :edit, :update, :show, :destroy]
 
   def index
-    @events = Event.all
+    @events = Event.order(created_at: :desc)
   end
 
   def new
@@ -26,7 +26,7 @@ class EventsController < ApplicationController
     if @event.save
       respond_to do |format|
         format.html { redirect_to events_path, notice: "An event was successfully created."}
-        format.turbo_stream { flash.now[:notice] = "Event was successfully created."}
+        format.turbo_stream { flash.now[:notice] = "Event was successfully created." }
       end
     else
       render :new, status: :unprocessable_entity
@@ -45,6 +45,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @events = Event.all
     @event.destroy
     respond_to do |format|
       format.html { redirect_to events_path, notice: "An event was successfully deleted."}

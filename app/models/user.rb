@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   has_many :notifications, as: :recipient, dependent: :destroy
 
-  has_many :event_registrations
+  has_many :event_registrations, dependent: :destroy
   has_many :attended_events, through: :event_registrations, source: :event
   
 

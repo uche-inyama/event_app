@@ -34,25 +34,46 @@
   bottom: 10px;
 }
 
+.empty-state--only-child {
+  display: none;
+}
+
+.empty-state--only-child:only-child {
+  display: revert;
+}
+
+input[value="Create Event"] {
+  padding: 3px 10px;
+}
+
+@media screen and (min-width: 376px) {
+  .session {
+    width: 95%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .session {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
 @media screen and (min-width: 768px) {
-   .session {
-     display: flex;
-     width: 200px;
-   }
-   .sign-up, .log-in {
-     width: 50%;
-   }
-   .log-in {
-     height: 40px;
-     display: flex;
-     align-items: center;
-     justify-content: center;
-   }
+  .session {
+    width: 100%;
+    margin: 0 auto;
+  }
    #flash {
-     width: 66%;
+    width: 80%;
+    margin: 0 auto;
+   }
+   .each-event {
+     width: 60%;
      margin: 0 auto;
    }
-   .event-index-image-wrapper {
-      width: 100%;
-  }
+   .signup-wrapper, .signin-wrapper {
+    width: 100px;
+   }
  }
