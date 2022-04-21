@@ -10,7 +10,7 @@ class CreateEvents < ActiveRecord::Migration[6.1]
       t.text :image_data
       t.string :event_type
       t.string :status
-      t.references :user, null: false, foreign_key: true
+      t.references :host, null: false, foreign_key: { to_table: :users }
       
       t.timestamps
     end

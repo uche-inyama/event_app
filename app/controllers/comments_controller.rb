@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:event_id, :user_id, :body)
+    params.require(:comment).permit(:event_id, :guest_id, :body)
   end
 
   def set_event

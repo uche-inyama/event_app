@@ -6,18 +6,18 @@ class User < ApplicationRecord
 
   include  ImageUploader::Attachment(:avatar)
   
-  has_many :events, dependent: :destroy
-  has_many :likes, dependent: :destroy
-  has_many :comments, dependent: :destroy
+  has_many :events, foreign_key: :host_id, dependent: :destroy
+  has_many :likes, foreign_key: :guest_id, dependent: :destroy
+  has_many :comments, foreign_key: :guest_id, dependent: :destroy
 
   has_many :notifications, as: :recipient, dependent: :destroy
 
-  has_many :event_registrations, dependent: :destroy
+  has_many :event_registrations, foreign_key: :guest_id, dependent: :destroy
   has_many :attended_events, through: :event_registrations, source: :event
   
 
   def likes?(event)
-    event.likes.where(user_id: id).any?
+    event.likes.where(guest_id: id).any?
   end
 
   private

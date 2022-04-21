@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
   include  ImageUploader::Attachment(:image)
 
-  belongs_to :user
+  belongs_to :host, class_name: 'User'
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 

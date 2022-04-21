@@ -1,5 +1,5 @@
 <%= turbo_stream.prepend "events" do %>
-  <%= render partial: "events/event", locals: { event: @event }%>
+  <%= render partial: "host/events/event", locals: { event: @event }%>
 <% end %>
 
 <%= turbo_stream.update Event.new, "" %>

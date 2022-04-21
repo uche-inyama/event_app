@@ -1,4 +1,4 @@
-class EventsController < ApplicationController
+class Host::EventsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_event, only: [:details, :edit, :update, :show, :destroy]
 
@@ -61,7 +61,7 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event)
-      .permit(:start_date, :end_date, :time, :address, :theme, :details, :image, :event_type, :status, :user_id)
+      .permit(:start_date, :end_date, :time, :address, :theme, :details, :image, :event_type, :status, :host_id)
   end
 
   def mark_notifications_as_read

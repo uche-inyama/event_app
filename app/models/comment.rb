@@ -1,8 +1,8 @@
 class Comment < ApplicationRecord
-  belongs_to :user
+  belongs_to :guest, class_name: 'User'
   belongs_to :event
 
-  validates_presence_of :body, :event_id, :user_id
+  validates_presence_of :body, :event_id, :guest_id
 
   after_create_commit :notify_recipient
   before_destroy :cleanup_notifications
@@ -11,7 +11,7 @@ class Comment < ApplicationRecord
   private
 
   def notify_recipient
-    CommentNotification.with(comment: self, event: event).deliver_later(event.user)
+    CommentNotification.with(comment: self, event: event).deliver_later(event.host)
   end
 
   def cleanup_notifications

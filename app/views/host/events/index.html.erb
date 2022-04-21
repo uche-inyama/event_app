@@ -3,7 +3,7 @@
   <%= turbo_frame_tag Event.new %>
 
   <%= turbo_frame_tag "events" do %>
-    <%= render "empty_state"%>
+    <%= render "empty_state" %>
     <%= render @events %>
   <% end %>
 </div>

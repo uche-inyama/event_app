@@ -20,7 +20,7 @@ class CommentNotification < Noticed::Base
   def message
     @event = Event.find(params[:comment][:event_id])
     @comment = Comment.find(params[:comment][:id])
-    @user = User.find(@comment.user_id)
+    @user = User.find(@comment.guest_id)
     "#{@user.email} commented on your event: #{@event.theme.truncate(10)}"
   end
   #

@@ -3,7 +3,7 @@ class LikesController < ApplicationController
   before_action :set_event
 
   def create
-    @like = @event.likes.where(user_id: current_user.id).first_or_create
+    @like = @event.likes.where(guest_id: current_user.id).first_or_create
     
     respond_to do |format|
       format.html { redirect_to events_path }

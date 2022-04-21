@@ -44,22 +44,22 @@ ActiveRecord::Schema.define(version: 2022_04_06_141922) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "guest_id", null: false
     t.bigint "event_id", null: false
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["event_id"], name: "index_comments_on_event_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
+    t.index ["guest_id"], name: "index_comments_on_guest_id"
   end
 
   create_table "event_registrations", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "guest_id", null: false
     t.bigint "event_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["event_id"], name: "index_event_registrations_on_event_id"
-    t.index ["user_id"], name: "index_event_registrations_on_user_id"
+    t.index ["guest_id"], name: "index_event_registrations_on_guest_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -72,19 +72,19 @@ ActiveRecord::Schema.define(version: 2022_04_06_141922) do
     t.text "image_data"
     t.string "event_type"
     t.string "status"
-    t.bigint "user_id", null: false
+    t.bigint "host_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_events_on_user_id"
+    t.index ["host_id"], name: "index_events_on_host_id"
   end
 
   create_table "likes", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.bigint "guest_id", null: false
     t.bigint "event_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["event_id"], name: "index_likes_on_event_id"
-    t.index ["user_id"], name: "index_likes_on_user_id"
+    t.index ["guest_id"], name: "index_likes_on_guest_id"
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -115,10 +115,10 @@ ActiveRecord::Schema.define(version: 2022_04_06_141922) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "events"
-  add_foreign_key "comments", "users"
+  add_foreign_key "comments", "users", column: "guest_id"
   add_foreign_key "event_registrations", "events"
-  add_foreign_key "event_registrations", "users"
-  add_foreign_key "events", "users"
+  add_foreign_key "event_registrations", "users", column: "guest_id"
+  add_foreign_key "events", "users", column: "host_id"
   add_foreign_key "likes", "events"
-  add_foreign_key "likes", "users"
+  add_foreign_key "likes", "users", column: "guest_id"
 end
