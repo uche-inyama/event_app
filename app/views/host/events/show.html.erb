@@ -17,7 +17,7 @@
       <% @comments.each do |comment| %>
         <div class="d-flex mb-2">
           <div class="comment-image-wrapper">
-            <%= image_tag(comment.user.avatar.url, size: "50") if comment.user.avatar%>
+            <%= image_tag(comment.guest.avatar.url, size: "50") if comment.guest.avatar%>
           </div> 
           <div class="ms-2 d-flex align-items-end text-bottom"><%= comment.body %></div>
         </div>

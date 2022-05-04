@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "show" do %>
   <div>
-    <%= render partial: 'event_detail', locals: {event: @event } %>
+    <%= render partial: 'event_detail', locals: { event: @event } %>
     <div class="mx-auto detail-close" >
       <div>
         <%= link_to 'close', event_path(@event), style: "position: relative; bottom: 25px; left: 250px;" %>

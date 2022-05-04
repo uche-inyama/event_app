@@ -11,7 +11,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @event.likes.where(user_id: current_user.id).destroy_all
+    @event.likes.where(guest_id: current_user.id).destroy_all
 
     respond_to do |format| 
       format.html { redirect_to events_path }

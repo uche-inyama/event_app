@@ -11,5 +11,5 @@ Rails.application.routes.draw do
     resource :event_registration, only: [:create, :destroy], as: :join
   end
   root to: "host/events#index"
-  get "event/:id/details", to: "events#details", as: 'details'
+  get "event/:id/details", to: "host/events#details", as: 'details'
 end
