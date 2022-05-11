@@ -1,7 +1,6 @@
 <%= turbo_stream_from "events" %>
 <div class="mt-4">
   <%= @output %>
-  <%= turbo_frame_tag Event.new %>
 
   <%= turbo_frame_tag "events" do %>
     <%= render "empty_state" %>
