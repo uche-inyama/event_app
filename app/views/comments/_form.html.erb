@@ -1,5 +1,5 @@
 <%= form_with model: Comment.new, url: event_comment_path(event) do |form| %>
-  <div class="field mx-1">
+  <div class="field mx-1 d-flex">
     <%= form.text_field :body, class: "form-control" %>
     <%= link_to "Cancel", events_path, class: "btn btn--light" %>
   </div>
