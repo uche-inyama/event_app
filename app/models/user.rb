@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  include  ImageUploader::Attachment(:avatar)
+  # include  ImageUploader::Attachment(:avatar)
+  has_one_attached :avatar
   
   has_many :events, foreign_key: :host_id, dependent: :destroy
   has_many :likes, foreign_key: :guest_id, dependent: :destroy

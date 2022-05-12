@@ -62,3 +62,5 @@ gem "devise", "~> 4.8"
 gem "noticed", "~> 1.5"
 
 gem 'letter_opener'
+
+gem "faker", "~> 2.20"
