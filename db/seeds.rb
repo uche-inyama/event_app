@@ -6,10 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-2.times do
+1.times do
   User.new do |user|
     user.email = Faker::Internet.email
     user.password = 'password'
+    user.avatar_data = user.avatar.attach(io: File.open(Rails.root.join('app/assets/images/default_profile.jpg')), 
+    filename: 'default_image.jpg')
     user.save
     2.times do
       user.events.build do |event|
